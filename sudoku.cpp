@@ -496,7 +496,7 @@ void gridParser(char grid[][9]) {
         iterationCount = 0;
 
         grid[2][7] = distr(gen); arrayPrinter(grid);
-        while (matchCheck(grid[2][7], secondLine, 7) || matchCheck(grid[2][7], thirdBox, 7) || matchCheck(grid[2][7], eighthRow, 2)) {
+        while (matchCheck(grid[2][7], thirdLine, 7) || matchCheck(grid[2][7], thirdBox, 7) || matchCheck(grid[2][7], eighthRow, 2)) {
             grid[2][7] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
@@ -504,16 +504,16 @@ void gridParser(char grid[][9]) {
                 break;
             }
         }
-        if (!matchCheck(grid[2][7], secondLine, 7) && !matchCheck(grid[2][7], thirdBox, 7) && !matchCheck(grid[2][7], eighthRow, 2)) {
+        if (!matchCheck(grid[2][7], thirdLine, 7) && !matchCheck(grid[2][7], thirdBox, 7) && !matchCheck(grid[2][7], eighthRow, 2)) {
             notOk7 = false;
         }
-        secondLine[7] = grid[2][7]; thirdBox[7] = grid[2][7]; eighthRow[2] = grid[2][7];
+        thirdLine[7] = grid[2][7]; thirdBox[7] = grid[2][7]; eighthRow[2] = grid[2][7];
         iterationCount = 0;
 
-        
+        fastForward = false;
 
         grid[2][8] = distr(gen); arrayPrinter(grid);
-        while (matchCheck(grid[2][8], secondLine, 8) || matchCheck(grid[2][8], thirdBox, 8) || matchCheck(grid[2][8], ninthRow, 2)) {
+        while (matchCheck(grid[2][8], thirdLine, 8) || matchCheck(grid[2][8], thirdBox, 8) || matchCheck(grid[2][8], ninthRow, 2)) {
             grid[2][8] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
@@ -521,7 +521,7 @@ void gridParser(char grid[][9]) {
                 break;
             }
         }
-        if (!matchCheck(grid[2][8], secondLine, 8) && !matchCheck(grid[2][8], thirdBox, 8) && !matchCheck(grid[2][8], ninthRow, 2)) {
+        if (!matchCheck(grid[2][8], thirdLine, 8) && !matchCheck(grid[2][8], thirdBox, 8) && !matchCheck(grid[2][8], ninthRow, 2)) {
             notOk8 = false;
         }
         ninthRow[2] = grid[2][8];
@@ -670,9 +670,9 @@ void gridParser(char grid[][9]) {
         fourthLine[7] = grid[3][7]; sixthBox[1] = grid[3][7]; eighthRow[4] = grid[3][7];
         iterationCount = 0;
 
-        grid[3][8] = distr(gen); arrayPrinter2(grid);
+        grid[3][8] = distr(gen); arrayPrinter(grid);
         while (matchCheck(grid[3][8], fourthLine, 8) || matchCheck(grid[3][8], sixthBox, 2) || matchCheck(grid[3][8], ninthRow, 4)) {
-            grid[3][8] = distr(gen); arrayPrinter2(grid);
+            grid[3][8] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
                 notOk8 = true;
@@ -686,18 +686,12 @@ void gridParser(char grid[][9]) {
 
         if (notOk0 || notOk1 || notOk2 || notOk3 || notOk4 || notOk5 || notOk6 || notOk7 || notOk8) {
             grid[3][0] = 0; grid[3][1] = 0; grid[3][2] = 0; grid[3][3] = 0; grid[3][4] = 0; grid[3][5] = 0; grid[3][6] = 0; ; grid[3][7] = 0; grid[3][8] = 0; grid[3][8] = 0;
-            arrayPrinter2(grid);
+            arrayPrinter(grid);
         }
 
     } while (notOk0 || notOk1 || notOk2 || notOk3 || notOk4 || notOk5 || notOk6 || notOk7 || notOk8); boolClearer();
 
-
-
-
-
-
-    std::cin.get();
-
+    
 
     grid[3][0] = distr(gen);
     while (matchCheck(grid[3][0], thirdBox, 3) || matchCheck(grid[3][0], firstRow, 3))
@@ -753,6 +747,8 @@ void arrayPrinter2(char grid[][9]) {
 
 void arrayPrinter(char grid[][9]) {
 
+    system("cls");
+
     for (int i = 0; i < 9; i++) {
         for (int q = 0; q < 9; q++) {
             std::cout << "  " << +grid[i][q] << "  ";
@@ -768,10 +764,10 @@ void arrayPrinter(char grid[][9]) {
         }
     }
 
-    //if (!fastForward) {
+    if (!fastForward) {
     std::this_thread::sleep_for(std::chrono::nanoseconds(50000000));
-    //}
-    system("cls");
+    }
+    
 
 }
 
