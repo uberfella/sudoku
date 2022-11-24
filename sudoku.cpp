@@ -34,15 +34,6 @@ char fifthBox[collectionSize]{};
 char sixthBox[collectionSize]{};
 
 bool eraseLine = false;
-/*bool notOk0 = false;
-bool notOk1 = false;
-bool notOk2 = false;
-bool notOk3 = false;
-bool notOk4 = false;
-bool notOk5 = false;
-bool notOk6 = false;
-bool notOk7 = false;
-bool notOk8 = false;*/
 bool fastForward = false;
 
 bool matchCheck(char number, char collection[], char maxIndex);
