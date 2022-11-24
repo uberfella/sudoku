@@ -33,7 +33,8 @@ char fourthBox[collectionSize]{};
 char fifthBox[collectionSize]{};
 char sixthBox[collectionSize]{};
 
-bool notOk0 = false;
+bool eraseLine = false;
+/*bool notOk0 = false;
 bool notOk1 = false;
 bool notOk2 = false;
 bool notOk3 = false;
@@ -41,14 +42,13 @@ bool notOk4 = false;
 bool notOk5 = false;
 bool notOk6 = false;
 bool notOk7 = false;
-bool notOk8 = false;
+bool notOk8 = false;*/
 bool fastForward = false;
 
 bool matchCheck(char number, char collection[], char maxIndex);
 void gridParser(char grid[][9]);
 void arrayPrinter(char grid[][9]);
 void arrayPrinter2(char grid[][9]);
-void boolClearer();
 
 int main()
 {
@@ -148,7 +148,7 @@ void gridParser(char grid[][9]) {
         }
     }*/
 
-    fastForward = true;
+    /*fastForward = true;*/
 
     grid[0][0] = distr(gen); firstLine[0] = grid[0][0]; firstBox[0] = grid[0][0]; firstRow[0] = grid[0][0]; arrayPrinter(grid);
 
@@ -219,6 +219,7 @@ void gridParser(char grid[][9]) {
     
 
     do {
+        eraseLine = false;
         secondLine[0], secondLine[1], secondLine[2], secondLine[3], secondLine[4], secondLine[5], secondLine[6], secondLine[7], secondLine[8] = 0;
         firstBox[3], firstBox[4], firstBox[5], secondBox[3], secondBox[4], secondBox[5], thirdBox[3], thirdBox[4], thirdBox[5] = 0;
         firstRow[1], secondRow[1], thirdRow[1], fourthRow[1], fifthRow[1], sixthRow[1], seventhRow[1], eighthRow[1], ninthRow[1] = 0;
@@ -230,13 +231,9 @@ void gridParser(char grid[][9]) {
             grid[1][0] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk0 = true;
+                eraseLine = true;
                 break;
             }
-        }
-
-        if (!matchCheck(grid[1][0], firstBox, 3) && !matchCheck(grid[1][0], firstRow, 1)) {
-            notOk0 = false;
         }
 
         secondLine[0] = grid[1][0]; firstBox[3] = grid[1][0]; firstRow[1] = grid[1][0];
@@ -249,12 +246,9 @@ void gridParser(char grid[][9]) {
             grid[1][1] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk1 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[1][1], secondLine, 1) && !matchCheck(grid[1][1], firstBox, 4) && !matchCheck(grid[1][1], secondRow, 1)) {
-            notOk1 = false;
         }
         secondLine[1] = grid[1][1]; firstBox[4] = grid[1][1]; secondRow[1] = grid[1][1];
 
@@ -266,12 +260,9 @@ void gridParser(char grid[][9]) {
             grid[1][2] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk2 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[1][2], secondLine, 2) && !matchCheck(grid[1][2], firstBox, 5) && !matchCheck(grid[1][2], thirdRow, 1)) {
-            notOk2 = false;
         }
         secondLine[2] = grid[1][2]; firstBox[5] = grid[1][2]; thirdRow[1] = grid[1][2];
         iterationCount = 0;
@@ -282,12 +273,9 @@ void gridParser(char grid[][9]) {
             grid[1][3] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk3 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[1][3], secondLine, 3) && !matchCheck(grid[1][3], secondBox, 3) && !matchCheck(grid[1][3], fourthRow, 1)) {
-            notOk3 = false;
         }
         secondLine[3] = grid[1][3]; secondBox[3] = grid[1][3]; fourthRow[1] = grid[1][3];
         iterationCount = 0;
@@ -297,12 +285,9 @@ void gridParser(char grid[][9]) {
             grid[1][4] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk4 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[1][4], secondLine, 4) && !matchCheck(grid[1][4], secondBox, 4) && !matchCheck(grid[1][4], fifthRow, 1)) {
-            notOk4 = false;
         }
         secondLine[4] = grid[1][4]; secondBox[4] = grid[1][4]; fifthRow[1] = grid[1][4];
         iterationCount = 0;
@@ -312,12 +297,9 @@ void gridParser(char grid[][9]) {
             grid[1][5] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk5 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[1][5], secondLine, 5) && !matchCheck(grid[1][5], secondBox, 5) && !matchCheck(grid[1][5], sixthRow, 1)) {
-            notOk5 = false;
         }
         secondLine[5] = grid[1][5]; secondBox[5] = grid[1][5]; sixthRow[1] = grid[1][5];
         iterationCount = 0;
@@ -327,12 +309,9 @@ void gridParser(char grid[][9]) {
             grid[1][6] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk6 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[1][6], secondLine, 6) && !matchCheck(grid[1][6], thirdBox, 3) && !matchCheck(grid[1][6], seventhRow, 1)) {
-            notOk6 = false;
         }
         secondLine[6] = grid[1][6]; thirdBox[3] = grid[1][6]; seventhRow[1] = grid[1][6];
         iterationCount = 0;
@@ -342,12 +321,9 @@ void gridParser(char grid[][9]) {
             grid[1][7] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk7 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[1][7], secondLine, 7) && !matchCheck(grid[1][7], thirdBox, 4) && !matchCheck(grid[1][7], eighthRow, 1)) {
-            notOk7 = false;
         }
         secondLine[7] = grid[1][7]; thirdBox[4] = grid[1][7]; eighthRow[1] = grid[1][7];
         iterationCount = 0;
@@ -359,23 +335,21 @@ void gridParser(char grid[][9]) {
             grid[1][8] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk8 = true;
+                eraseLine = true;
                 break;
             }
         }
-        if (!matchCheck(grid[1][8], secondLine, 8) && !matchCheck(grid[1][8], thirdBox, 5) && !matchCheck(grid[1][8], ninthRow, 1)) {
-            notOk8 = false;
-        }
         thirdBox[5] = grid[1][8]; ninthRow[1] = grid[1][8];
 
-        if (notOk0 || notOk1 || notOk2 || notOk3 || notOk4 || notOk5 || notOk6 || notOk7 || notOk8) {
+        if (eraseLine) {
             grid[1][0] = 0; grid[1][1] = 0; grid[1][2] = 0; grid[1][3] = 0; grid[1][4] = 0; grid[1][5] = 0; grid[1][6] = 0; ; grid[1][7] = 0; grid[1][8] = 0; grid[1][8] = 0;
             arrayPrinter(grid);
         }
 
-    } while (notOk0 || notOk1 || notOk2 || notOk3 || notOk4 || notOk5 || notOk6 || notOk7 || notOk8); boolClearer();
+    } while (eraseLine);
 
     do {
+        eraseLine = false;
         thirdLine[0], thirdLine[1], thirdLine[2], thirdLine[3], thirdLine[4], thirdLine[5], thirdLine[6], thirdLine[7] = 0;
         firstBox[6], firstBox[7], secondBox[6], secondBox[7], thirdBox[6], thirdBox[7] = 0;
         firstRow[2], secondRow[2], thirdRow[2], fourthRow[2], fifthRow[2], sixthRow[2], seventhRow[2], eighthRow[2], ninthRow[2] = 0;
@@ -387,13 +361,9 @@ void gridParser(char grid[][9]) {
             grid[2][0] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk0 = true;
+                eraseLine = true;
                 break;
             }
-        }
-
-        if (!matchCheck(grid[2][0], firstBox, 6) && !matchCheck(grid[2][0], firstRow, 2)) {
-            notOk0 = false;
         }
 
         thirdLine[0] = grid[2][0]; firstBox[6] = grid[2][0]; firstRow[2] = grid[2][0];
@@ -406,12 +376,9 @@ void gridParser(char grid[][9]) {
             grid[2][1] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk1 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[2][1], thirdLine, 1) && !matchCheck(grid[2][1], firstBox, 7) && !matchCheck(grid[2][1], secondRow, 2)) {
-            notOk1 = false;
         }
         thirdLine[1] = grid[2][1]; firstBox[7] = grid[2][1]; secondRow[2] = grid[2][1];
 
@@ -423,12 +390,9 @@ void gridParser(char grid[][9]) {
             grid[2][2] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk2 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[2][2], thirdLine, 2) && !matchCheck(grid[2][2], firstBox, 8) && !matchCheck(grid[2][2], thirdRow, 2)) {
-            notOk2 = false;
         }
 
         thirdLine[2] = grid[2][2]; firstBox[8] = grid[2][2]; thirdRow[2] = grid[2][2];
@@ -440,12 +404,9 @@ void gridParser(char grid[][9]) {
             grid[2][3] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk3 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[2][3], thirdLine, 3) && !matchCheck(grid[2][3], secondBox, 6) && !matchCheck(grid[2][3], fourthRow, 2)) {
-            notOk3 = false;
         }
         thirdLine[3] = grid[2][3]; secondBox[6] = grid[2][3]; fourthRow[2] = grid[2][3];
         iterationCount = 0;
@@ -455,12 +416,9 @@ void gridParser(char grid[][9]) {
             grid[2][4] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk4 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[2][4], thirdLine, 4) && !matchCheck(grid[2][4], secondBox, 7) && !matchCheck(grid[2][4], fifthRow, 2)) {
-            notOk4 = false;
         }
         thirdLine[4] = grid[2][4]; secondBox[7] = grid[2][4]; fifthRow[2] = grid[2][4];
         iterationCount = 0;
@@ -470,12 +428,9 @@ void gridParser(char grid[][9]) {
             grid[2][5] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk5 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[2][5], thirdLine, 5) && !matchCheck(grid[2][5], secondBox, 8) && !matchCheck(grid[2][5], sixthRow, 2)) {
-            notOk5 = false;
         }
         thirdLine[5] = grid[2][5]; sixthRow[2] = grid[2][5];
         iterationCount = 0;
@@ -485,12 +440,9 @@ void gridParser(char grid[][9]) {
             grid[2][6] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk6 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[2][6], thirdLine, 6) && !matchCheck(grid[2][6], thirdBox, 6) && !matchCheck(grid[2][6], seventhRow, 2)) {
-            notOk6 = false;
         }
         thirdLine[6] = grid[2][6]; thirdBox[6] = grid[2][6]; seventhRow[2] = grid[2][6];
         iterationCount = 0;
@@ -500,12 +452,9 @@ void gridParser(char grid[][9]) {
             grid[2][7] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk7 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[2][7], thirdLine, 7) && !matchCheck(grid[2][7], thirdBox, 7) && !matchCheck(grid[2][7], eighthRow, 2)) {
-            notOk7 = false;
         }
         thirdLine[7] = grid[2][7]; thirdBox[7] = grid[2][7]; eighthRow[2] = grid[2][7];
         iterationCount = 0;
@@ -517,23 +466,21 @@ void gridParser(char grid[][9]) {
             grid[2][8] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk8 = true;
+                eraseLine = true;
                 break;
             }
         }
-        if (!matchCheck(grid[2][8], thirdLine, 8) && !matchCheck(grid[2][8], thirdBox, 8) && !matchCheck(grid[2][8], ninthRow, 2)) {
-            notOk8 = false;
-        }
         ninthRow[2] = grid[2][8];
 
-        if (notOk0 || notOk1 || notOk2 || notOk3 || notOk4 || notOk5 || notOk6 || notOk7 || notOk8) {
+        if (eraseLine) {
             grid[2][0] = 0; grid[2][1] = 0; grid[2][2] = 0; grid[2][3] = 0; grid[2][4] = 0; grid[2][5] = 0; grid[2][6] = 0; ; grid[2][7] = 0; grid[2][8] = 0; grid[2][8] = 0;
             arrayPrinter(grid);
         }
 
-    } while (notOk0 || notOk1 || notOk2 || notOk3 || notOk4 || notOk5 || notOk6 || notOk7 || notOk8); boolClearer();
+    } while (eraseLine);
 
     do {
+        eraseLine = false;
         fourthLine[0], fourthLine[1], fourthLine[2], fourthLine[3], fourthLine[4], fourthLine[5], fourthLine[6], fourthLine[7], fourthLine[8] = 0;
         fourthBox[0], fourthBox[1], fourthBox[2], fifthBox[0], fifthBox[1], fifthBox[2], sixthBox[0], sixthBox[1], sixthBox[2] = 0;
         firstRow[3], secondRow[3], thirdRow[3], fourthRow[3], fifthRow[3], sixthRow[3], seventhRow[3], eighthRow[3], ninthRow[3] = 0;
@@ -547,13 +494,9 @@ void gridParser(char grid[][9]) {
             grid[3][0] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk0 = true;
+                eraseLine = true;
                 break;
             }
-        }
-
-        if (!matchCheck(grid[3][0], firstRow, 3)) {
-            notOk0 = false;
         }
 
         fourthLine[0] = grid[3][0]; fourthBox[0] = grid[3][0]; firstRow[3] = grid[3][0];
@@ -566,12 +509,9 @@ void gridParser(char grid[][9]) {
             grid[3][1] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk1 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[3][1], fourthLine, 1) && !matchCheck(grid[3][1], fourthBox, 1) && !matchCheck(grid[3][1], secondRow, 3)) {
-            notOk1 = false;
         }
         fourthLine[1] = grid[3][1]; fourthBox[1] = grid[2][1]; secondRow[3] = grid[3][1];
 
@@ -583,12 +523,9 @@ void gridParser(char grid[][9]) {
             grid[3][2] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk2 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[3][2], fourthLine, 2) && !matchCheck(grid[3][2], fourthBox, 2) && !matchCheck(grid[3][2], thirdRow, 3)) {
-            notOk2 = false;
         }
 
         fourthLine[2] = grid[3][2]; fourthBox[2] = grid[3][2]; thirdRow[3] = grid[3][2];
@@ -600,12 +537,9 @@ void gridParser(char grid[][9]) {
             grid[3][3] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk3 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[3][3], fourthLine, 3) && !matchCheck(grid[3][3], fourthRow, 3)) {
-            notOk3 = false;
         }
         fourthLine[3] = grid[3][3]; fifthBox[0] = grid[3][3]; fourthRow[3] = grid[3][3];
         iterationCount = 0;
@@ -615,12 +549,9 @@ void gridParser(char grid[][9]) {
             grid[3][4] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk4 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[3][4], fourthLine, 4) && !matchCheck(grid[3][4], fifthBox, 1) && !matchCheck(grid[3][4], fifthRow, 4)) {
-            notOk4 = false;
         }
         fourthLine[4] = grid[3][4]; fifthBox[1] = grid[3][4]; fifthRow[4] = grid[3][4];
         iterationCount = 0;
@@ -630,12 +561,9 @@ void gridParser(char grid[][9]) {
             grid[3][5] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk5 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[3][5], fourthLine, 5) && !matchCheck(grid[3][5], fifthBox, 2) && !matchCheck(grid[3][5], sixthRow, 4)) {
-            notOk5 = false;
         }
         fourthLine[5] = grid[3][5]; fifthBox[2] = grid[3][5]; sixthRow[4] = grid[3][5];
         iterationCount = 0;
@@ -645,12 +573,9 @@ void gridParser(char grid[][9]) {
             grid[3][6] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk6 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[3][6], fourthLine, 6) && !matchCheck(grid[3][6], seventhRow, 4)) {
-            notOk6 = false;
         }
         fourthLine[6] = grid[3][6]; sixthBox[0] = grid[3][6]; seventhRow[4] = grid[3][6];
         iterationCount = 0;
@@ -660,12 +585,9 @@ void gridParser(char grid[][9]) {
             grid[3][7] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk7 = true;
+                eraseLine = true;
                 break;
             }
-        }
-        if (!matchCheck(grid[3][7], fourthLine, 7) && !matchCheck(grid[3][7], sixthBox, 1) && !matchCheck(grid[3][7], eighthRow, 4)) {
-            notOk7 = false;
         }
         fourthLine[7] = grid[3][7]; sixthBox[1] = grid[3][7]; eighthRow[4] = grid[3][7];
         iterationCount = 0;
@@ -675,21 +597,18 @@ void gridParser(char grid[][9]) {
             grid[3][8] = distr(gen); arrayPrinter(grid);
             iterationCount++;
             if (iterationCount == 20) {
-                notOk8 = true;
+                eraseLine = true;
                 break;
             }
         }
-        if (!matchCheck(grid[3][8], fourthLine, 8) && !matchCheck(grid[3][8], sixthBox, 2) && !matchCheck(grid[3][8], ninthRow, 4)) {
-            notOk8 = false;
-        }
         sixthBox[3] = grid[3][8]; ninthRow[4] = grid[3][8];
 
-        if (notOk0 || notOk1 || notOk2 || notOk3 || notOk4 || notOk5 || notOk6 || notOk7 || notOk8) {
+        if (eraseLine) {
             grid[3][0] = 0; grid[3][1] = 0; grid[3][2] = 0; grid[3][3] = 0; grid[3][4] = 0; grid[3][5] = 0; grid[3][6] = 0; ; grid[3][7] = 0; grid[3][8] = 0; grid[3][8] = 0;
             arrayPrinter(grid);
         }
 
-    } while (notOk0 || notOk1 || notOk2 || notOk3 || notOk4 || notOk5 || notOk6 || notOk7 || notOk8); boolClearer();
+    } while (eraseLine);
 
     
 
@@ -765,20 +684,8 @@ void arrayPrinter(char grid[][9]) {
     }
 
     if (!fastForward) {
-    std::this_thread::sleep_for(std::chrono::nanoseconds(50000000));
+        std::this_thread::sleep_for(std::chrono::nanoseconds(50000000));
     }
     
 
-}
-
-void boolClearer() {
-     notOk0 = false;
-     notOk1 = false;
-     notOk2 = false;
-     notOk3 = false;
-     notOk4 = false;
-     notOk5 = false;
-     notOk6 = false;
-     notOk7 = false;
-     notOk8 = false;
 }
